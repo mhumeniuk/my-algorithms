@@ -1,0 +1,25 @@
+{
+  "name": "my-algorithms",
+  "version": "1.0.0",
+  "description": "Here I will commit various solutions to algorithmic problems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhumeniuk/my-algorithms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhumeniuk/my-algorithms/issues"
+  },
+  "homepage": "https://github.com/mhumeniuk/my-algorithms#readme",
+  "dependencies": {
+    "http-server": "^14.0.0",
+    "node-watch": "^0.7.2"
+  }
+}
