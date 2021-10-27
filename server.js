@@ -1,10 +1,13 @@
-var express = require('express');
-var http = require('http');
-var path = require('path');
-var reload = require('reload');
-var logger = require('morgan');
-var watch = require('node-watch');
-var ncp = require('ncp').ncp;
+import express from "express";
+import http from "http";
+import path from "path";
+import reload from "reload";
+import morgan from "morgan";
+import watch from "node-watch";
+import ncp from "ncp";
+
+const __dirname = path.resolve();
+const logger = morgan;
 
 const app = express();
 
@@ -12,11 +15,10 @@ const localDirname = '/public';
 const staticDirname = '/static';
 const sourceDirname = '/src';
 
-//TODO: move to config, use nodemon
+//TODO: move to config
 const publicDir = path.join(__dirname, localDirname);
 const srcDir = path.join(__dirname, sourceDirname);
 const staticDir = path.join(publicDir, staticDirname);
-console.log(staticDir);
 
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
@@ -36,8 +38,8 @@ reload(app).then(function (reloadReturned) {
 
 //todo: make build code and copy bundle instead of files
 watch(srcDir, { recursive: true }, function (f, curr, prev) {
-  console.log('copying source code');
-  ncp(srcDir, staticDir, function (err) {
+  console.log('copying source code...');
+  ncp.ncp(srcDir, staticDir, function (err) {
     if (err) {
       return console.error(err);
     }
