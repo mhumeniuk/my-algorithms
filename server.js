@@ -34,17 +34,13 @@ reload(app).then(function (reloadReturned) {
   console.error('Reload could not start, could not start the app', err)
 });
 
-//watch for changes copy code, restart server
+//todo: make build code and copy bundle instead of files
 watch(srcDir, { recursive: true }, function (f, curr, prev) {
-  console.log('source code, restarting server...');
+  console.log('copying source code');
   ncp(srcDir, staticDir, function (err) {
     if (err) {
       return console.error(err);
     }
-    server.close(function() {
-      console.log('starting') 
-      startServer();
-    });
   });
 });
 
@@ -53,6 +49,5 @@ function startServer() {
     console.log('Web server listening on port ' + app.get('port'))
   });
 }
-
 
 var server = http.createServer(app);
