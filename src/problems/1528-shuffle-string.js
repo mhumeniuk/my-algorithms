@@ -17,6 +17,7 @@
 //"aaiougrt", indices = [4,0,2,6,7,3,1,5]
 //s = a, indeces = [5]
 //Complexity O(n)?
+//TODO: calculate memory complexity, decrease memory complexity
 var restoreString = function(s, indices) { 
     let result = []; 
     if (s.length == 0) {
