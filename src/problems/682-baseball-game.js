@@ -1,7 +1,7 @@
 /**
  * @param {string[]} ops
  * @return {number}
- */ß
+ */
 //["5","2","C","D","+"] 
 //Time elapsed: 35 mins
 var calPoints = function(ops) {
