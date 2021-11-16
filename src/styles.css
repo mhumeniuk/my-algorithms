@@ -1,0 +1,9 @@
+body {
+  background: lightgray;
+  border: 1px solid yellow;
+}
+html,
+body {
+  height: 100%
+}
+
