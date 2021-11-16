@@ -63,6 +63,19 @@ var middleNodeAlt = function(head) {
   return currentNode;
 };
 
+var goodSolutionFromLeetcodeSubmissions = function(head) {
+  // two pointer, once pointer hits the end the first pointer is in the middle
+  let slow = head
+  let fast = head
+  
+  while (fast && fast.next) {
+      slow = slow.next
+      fast = fast.next.next
+  }
+  
+  return slow;
+};
+
 //Initial bad idea reversing linked list. Since I though it i need two lists for "Two Pointer" problem
 /*while (currentNode !== null) {
   let nextNode;
