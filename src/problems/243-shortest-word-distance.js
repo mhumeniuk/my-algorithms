@@ -11,17 +11,11 @@ var shortestDistance = function(wordsDict, word1, word2) {
     let startingWord = null;
     for (let i = 0; i < wordsDict.length; i++) {
         if(wordsDict[i] == word1 || wordsDict[i] == word2) {
-           if (startingWord !== null) { //we went to the end
-               if (startingWord !== wordsDict[i]) {
-                   distances.push(steps);
-               }
-               steps = 1;
-               startingWord = wordsDict[i];
+           if (startingWord !== null && startingWord !== wordsDict[i]) { //we went to the end
+             distances.push(steps);
            }
-           else {
-               steps = 1;
-               startingWord = wordsDict[i];
-           }
+           steps = 1;
+           startingWord = wordsDict[i];
         }
         else if (startingWord !== null) {
             steps ++;
