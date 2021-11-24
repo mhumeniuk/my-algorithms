@@ -8,7 +8,6 @@
 var shortestDistance = function(wordsDict, word1, word2) {
     let steps = 0;
     let distances = [];
-    let hasStarted = false;
     let startingWord = null;
     for (let i = 0; i < wordsDict.length; i++) {
         if(wordsDict[i] == word1 || wordsDict[i] == word2) {
