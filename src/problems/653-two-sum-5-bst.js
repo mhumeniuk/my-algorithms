@@ -8,11 +8,68 @@
  */
 /**
  * @param {TreeNode} root
- * @param {number} k
+ * @param {number} 
  * @return {boolean}
  */
-//Super dumb shamefull brute force version. TODO: write O(log(n))
+
+//Good solution, used hint, breadth first search
+var findTarget = function(root, k) {
+    const stack = [root];
+    let hashset = new Set();
+    
+    while(stack.length !== 0) {
+        let currentNode = stack.pop();
+   
+        if (hashset.has(k - currentNode.val)) {
+            return true;
+        }
+        //BFS
+        hashset.add(currentNode.val);
+        if (currentNode.left !== null) {
+            stack.push(currentNode.left);
+        }
+        if (currentNode.right !== null) {
+            stack.push(currentNode.right);
+        }
+    }
+    return false;
+};
+
+//Better solution, also really slow
  var findTarget = function(root, k) {
+    let result = false;
+    const searchTree = (node, val) => {
+        if (node.val === val) {
+            result = true;
+        }
+        if (node.left !== null && node.val > val) {
+            searchTree(node.left, val);
+        }
+        if (node.right !== null && node.val < val) {
+            searchTree(node.right, val);
+        }
+    }
+    
+    const traverseTree = (node) => {
+        const rest = k - node.val;
+        if (rest !== node.val) { 
+            searchTree(root, rest);
+            if (result === true) {
+                return true;
+            }
+        }
+        if (node.left !== null) {
+           traverseTree(node.left); 
+        }
+        if (node.right !== null) {
+           traverseTree(node.right); 
+        }
+    }
+    traverseTree(root)
+    return result;
+};
+
+ var findTargetBrute = function(root, k) {
   const queue = [];   
   const traverseTree = (node) => {
       queue.unshift(node.val);
